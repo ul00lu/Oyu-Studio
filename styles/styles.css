@@ -343,7 +343,7 @@ h1,
        column-gap: 20px;
 }
 .header__image {
-  max-width: clamp(75px, 10.4166666667vw, 150px);
+  max-width: clamp(50px, 10.4166666667vw, 150px);
 }
 
 .section {

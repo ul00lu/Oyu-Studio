@@ -1,0 +1,41 @@
+.button {
+	@include flex-center(true);
+	border: var(--border);
+	border-radius: var(--border-radius);
+
+	&__1 {
+		padding-inline: 36px;
+		padding-block: 14px;
+		background-color: transparent;
+
+		@include hover {
+			color: var(--color-light);
+			background-color: var(--color-dark-alt);
+		}
+
+		@include mobile {
+			padding-inline: 30px;
+		}
+		@include mobile-s {
+			padding-inline: 20px;
+			padding-block: 13px;
+		}
+	}
+
+	&__2{
+		padding-inline:60px ;
+		padding-block: 18px;
+		font-size: 20px;
+		background-color: var(--color-dark-alt);
+		color: var(--color-light);
+
+		@include tablet{
+			padding-inline:50px
+		}
+
+		@include hover {
+			color: var(--color-dark-alt);
+			background-color: var(--color-light);
+		}
+	}
+}

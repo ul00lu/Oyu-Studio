@@ -455,6 +455,24 @@ h1,
   position: relative;
   text-align: center;
 }
+@media (max-width: 1280px) {
+  .slider-slide {
+    width: 50vh; /* Уменьшение высоты слайдов на средних экранах */
+    font-size: 1.5em; /* Уменьшение размера текста */
+  }
+}
+@media (max-width: 767px) {
+  .slider-slide {
+    width: 40vh; /* Уменьшение высоты слайдов на мобильных устройствах */
+    font-size: 1.2em; /* Уменьшение размера текста для мобильных */
+  }
+}
+@media (max-width: 480px) {
+  .slider-slide {
+    width: 30vh; /* Уменьшение высоты слайдов для очень маленьких экранов */
+    font-size: 1em; /* Еще меньше размер текста для очень маленьких экранов */
+  }
+}
 .slider-slide img {
   width: 100%;
   display: block;

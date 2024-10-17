@@ -166,6 +166,90 @@ document.addEventListener('DOMContentLoaded', function () {
 // startAutoSlide()
 
 // Слайдер
+// const sliderContainer = document.querySelector('.case__slider')
+// const sliderWrapper = document.querySelector('.slider-wrapper')
+// const slides = document.querySelectorAll('.slider-slide')
+// const prevButton = document.querySelector('.prev')
+// const nextButton = document.querySelector('.next')
+// const indicatorsContainer = document.querySelector('.slider-indicators')
+// let currentIndex = 0
+// let autoSlide
+// let startX = 0
+// let isDragging = false
+
+// // Функция для переключения слайдов
+// function showSlide(index) {
+// 	const totalSlides = slides.length
+// 	currentIndex = (index + totalSlides) % totalSlides
+// 	sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`
+
+// 	// Обновляем индикаторы
+// 	document
+// 		.querySelectorAll('.slider-indicators div')
+// 		.forEach((indicator, i) => {
+// 			indicator.classList.toggle('active', i === currentIndex)
+// 		})
+// }
+
+// // Добавляем индикаторы
+// slides.forEach((_, index) => {
+// 	const indicator = document.createElement('div')
+// 	if (index === 0) indicator.classList.add('active')
+// 	indicator.addEventListener('click', () => showSlide(index))
+// 	indicatorsContainer.appendChild(indicator)
+// })
+
+// // Переключение по кнопкам
+// prevButton.addEventListener('click', () => showSlide(currentIndex - 1))
+// nextButton.addEventListener('click', () => showSlide(currentIndex + 1))
+
+// // Автоперелистывание
+// function startAutoSlide() {
+// 	autoSlide = setInterval(() => showSlide(currentIndex + 1), 3000)
+// }
+
+// function stopAutoSlide() {
+// 	clearInterval(autoSlide)
+// }
+
+// // Сенсорное управление для мобильных устройств
+// sliderWrapper.addEventListener('touchstart', e => {
+// 	startX = e.touches[0].clientX
+// 	stopAutoSlide() // Останавливаем автопрокрутку при начале свайпа
+// 	isDragging = true
+// })
+
+// sliderWrapper.addEventListener('touchmove', e => {
+// 	if (!isDragging) return
+
+// 	const touchEndX = e.touches[0].clientX
+// 	const diffX = touchEndX - startX
+
+// 	// Если движение достаточно велико для свайпа (например, > 50px), переключаем слайд
+// 	if (diffX > 50) {
+// 		showSlide(currentIndex - 1) // Свайп вправо — предыдущий слайд
+// 		isDragging = false
+// 	} else if (diffX < -50) {
+// 		showSlide(currentIndex + 1) // Свайп влево — следующий слайд
+// 		isDragging = false
+// 	}
+// })
+
+// sliderWrapper.addEventListener('touchend', () => {
+// 	isDragging = false
+// 	startAutoSlide() // Возобновляем автопрокрутку после завершения свайпа
+// })
+
+// // Остановка автопрокрутки при наведении (для десктопа)
+// sliderContainer.addEventListener('mouseenter', stopAutoSlide)
+
+// // Возобновление автопрокрутки при уходе мыши (для десктопа)
+// sliderContainer.addEventListener('mouseleave', startAutoSlide)
+
+// // Запуск автопрокрутки
+// startAutoSlide()
+
+// Слайдер
 const sliderContainer = document.querySelector('.case__slider')
 const sliderWrapper = document.querySelector('.slider-wrapper')
 const slides = document.querySelectorAll('.slider-slide')
@@ -173,6 +257,7 @@ const prevButton = document.querySelector('.prev')
 const nextButton = document.querySelector('.next')
 const indicatorsContainer = document.querySelector('.slider-indicators')
 let currentIndex = 0
+let isMobile = window.innerWidth <= 767 // Проверка на мобильное устройство
 let autoSlide
 let startX = 0
 let isDragging = false
@@ -203,19 +288,9 @@ slides.forEach((_, index) => {
 prevButton.addEventListener('click', () => showSlide(currentIndex - 1))
 nextButton.addEventListener('click', () => showSlide(currentIndex + 1))
 
-// Автоперелистывание
-function startAutoSlide() {
-	autoSlide = setInterval(() => showSlide(currentIndex + 1), 3000)
-}
-
-function stopAutoSlide() {
-	clearInterval(autoSlide)
-}
-
 // Сенсорное управление для мобильных устройств
 sliderWrapper.addEventListener('touchstart', e => {
 	startX = e.touches[0].clientX
-	stopAutoSlide() // Останавливаем автопрокрутку при начале свайпа
 	isDragging = true
 })
 
@@ -237,14 +312,28 @@ sliderWrapper.addEventListener('touchmove', e => {
 
 sliderWrapper.addEventListener('touchend', () => {
 	isDragging = false
-	startAutoSlide() // Возобновляем автопрокрутку после завершения свайпа
 })
 
-// Остановка автопрокрутки при наведении (для десктопа)
-sliderContainer.addEventListener('mouseenter', stopAutoSlide)
+// Функция для анимации индикаторов
+function animateIndicators() {
+	document.querySelectorAll('.slider-indicators div').forEach(indicator => {
+		indicator.style.animation = 'indicatorBounce 1s ease infinite' // Зацикленная анимация
+	})
+}
 
-// Возобновление автопрокрутки при уходе мыши (для десктопа)
-sliderContainer.addEventListener('mouseleave', startAutoSlide)
+// Используем IntersectionObserver для отслеживания, когда слайдер становится видимым
+const observer = new IntersectionObserver(entries => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting && isMobile) {
+			animateIndicators() // Анимация индикаторов, когда слайдер попадает в область видимости
+		}
+	})
+})
 
-// Запуск автопрокрутки
-startAutoSlide()
+// Отслеживаем появление слайдера в зоне видимости
+observer.observe(sliderContainer)
+
+// Обработка изменения размера экрана
+window.addEventListener('resize', () => {
+	isMobile = window.innerWidth <= 767
+})

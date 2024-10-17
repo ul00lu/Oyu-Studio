@@ -439,4 +439,94 @@ h1,
 .phases.fade-out {
   opacity: 0;
   transform: translateY(20px);
+}
+
+/* Стили для слайдера */
+.slider {
+  /* Стили для стрелок */
+  /* Индикаторы */
+}
+.slider-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.slider-slide {
+  min-width: 100%;
+  position: relative;
+  text-align: center;
+}
+.slider-slide img {
+  width: 100%;
+  display: block;
+}
+.slider-name {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+.slider-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #d94f3d;
+  font-size: 2.5em;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 100;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+@media (max-width: 1023px) {
+  .slider-control {
+    display: none;
+  }
+}
+.slider-control:hover {
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(255, 255, 255);
+}
+.slider-control.prev {
+  left: 15px;
+}
+.slider-control.next {
+  right: 15px;
+}
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.slider-indicators div {
+  width: 15px;
+  height: 15px;
+  margin: 0 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.slider-indicators div.active {
+  background-color: rgb(255, 255, 255);
+}
+
+.case__slider {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }/*# sourceMappingURL=styles.css.map */

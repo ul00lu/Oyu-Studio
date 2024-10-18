@@ -276,6 +276,13 @@ function showSlide(index) {
 		})
 }
 
+// Функция для анимации индикаторов
+function animateIndicators() {
+	document.querySelectorAll('.slider-indicators div').forEach(indicator => {
+		indicator.style.animation = 'indicatorBounce 1s ease infinite' // Зацикленная анимация
+	})
+}
+
 // Добавляем индикаторы
 slides.forEach((_, index) => {
 	const indicator = document.createElement('div')

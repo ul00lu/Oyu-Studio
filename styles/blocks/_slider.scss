@@ -84,26 +84,28 @@
 	/* Индикаторы */
 	&-indicators {
 		display: flex;
-		justify-content: center;
-		position: absolute;
-		bottom: 15px;
-		left: 50%;
-		transform: translateX(-50%);
+    justify-content: center;
+    position: absolute;
+    bottom: 20px; /* Индикаторы будут располагаться внизу слайдера */
+    left: 50%;
+    transform: translateX(-50%);
 	}
 
 	&-indicators div {
-		width: 15px;
-		height: 15px;
-		margin: 0 5px;
-		background-color: rgba(255, 255, 255, 0.5);
-		border-radius: 50%;
-		cursor: pointer;
-		transition: background-color 0.3s;
-		display: inline-block;
+		width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.7); /* Светлый цвет для неактивных индикаторов */
+    border-radius: 50%;
+    margin: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
 	}
 
 	&-indicators div.active {
-		background-color: rgba(255, 255, 255, 1);
+		  background-color: rgba(255, 255, 255, 1); /* Яркий цвет для активного индикатора */
+    border: 2px solid rgba(255, 255, 255, 1); /* Белая рамка вокруг активного индикатора */
+    width: 16px;
+    height: 16px;
+    transform: scale(1.2); /* Легкое увеличение активного индикатора */
 	}
 
 	@keyframes indicatorBounce {

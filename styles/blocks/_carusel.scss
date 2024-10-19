@@ -1,0 +1,91 @@
+.carousel {
+	&-container {
+		position: relative;
+		max-width: 1200px;
+		margin: 0 auto;
+		height: 400px; /* Фиксированная высота карусели */
+		overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
+
+		@include mobile {
+			height: auto;
+		}
+	}
+
+	&-slide {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 20px;
+		background-color: #f0f4ff;
+		border-radius: 20px;
+		margin-bottom: 20px;
+		height: 100%; /* Растянуть слайд по высоте контейнера */
+		box-sizing: border-box; /* Для учета padding в высоту */
+
+		@include mobile {
+			flex-direction: column;
+			text-align: center;
+			height: auto; /* Высота может изменяться на мобильных */
+		}
+	}
+
+	&-text {
+		width: 50%;
+		max-height: 100%; /* Ограничение высоты для текстового блока */
+		overflow-y: auto; /* Скролл, если текст не помещается */
+
+    @include mobile{
+        width: 100%;
+    }
+	}
+
+	&-text h1 {
+		font-size: 2.5em;
+		color: #333;
+		margin-bottom: 10px;
+	}
+
+	&-text p {
+		font-size: 1.2em;
+		color: #666;
+	}
+
+	&-image {
+		width: 45%;
+		max-height: 100%; /* Ограничение высоты для изображения */
+	}
+
+	&-image img {
+		width: 100%;
+		height: auto; /* Автоматическое масштабирование изображения */
+		border-radius: 20px;
+		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+
+    @include mobile{
+       width: 100%;
+       margin-top: 20px;
+    }
+	}
+
+	&-indicators {
+		text-align: center;
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+
+	.dot {
+		width: 12px;
+		height: 12px;
+		background-color: #ddd;
+		border-radius: 50%;
+		display: inline-block;
+		margin: 5px;
+		cursor: pointer;
+	}
+
+	.dot.active {
+		background-color: #333;
+	}
+}

@@ -441,105 +441,87 @@ h1,
   transform: translateY(20px);
 }
 
-/* Стили для слайдера */
-.slider {
-  /* Стили для стрелок */
-  /* Индикаторы */
-}
-.slider-wrapper {
-  display: flex;
-  transition: transform 0.6s ease-in-out;
-}
-.slider-slide {
-  min-width: 100%;
+.carousel-container {
   position: relative;
-  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 400px; /* Фиксированная высота карусели */
+  overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
 }
-.slider-slide img {
-  min-width: 100%;
-  display: block;
-}
-.slider-name {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 1.5rem;
-}
-.slider-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  color: #d94f3d;
-  font-size: 2.5em;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  z-index: 100;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-@media (max-width: 1023px) {
-  .slider-control {
-    display: none;
+@media (max-width: 767px) {
+  .carousel-container {
+    height: auto;
   }
 }
-.slider-control:hover {
-  background-color: rgb(255, 255, 255);
-  border-color: rgb(255, 255, 255);
-}
-.slider-control.prev {
-  left: 15px;
-}
-.slider-control.next {
-  right: 15px;
-}
-.slider-indicators {
+.carousel-slide {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background-color: #f0f4ff;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  height: 100%; /* Растянуть слайд по высоте контейнера */
+  box-sizing: border-box; /* Для учета padding в высоту */
+}
+@media (max-width: 767px) {
+  .carousel-slide {
+    flex-direction: column;
+    text-align: center;
+    height: auto; /* Высота может изменяться на мобильных */
+  }
+}
+.carousel-text {
+  width: 50%;
+  max-height: 100%; /* Ограничение высоты для текстового блока */
+  overflow-y: auto; /* Скролл, если текст не помещается */
+}
+@media (max-width: 767px) {
+  .carousel-text {
+    width: 100%;
+  }
+}
+.carousel-text h1 {
+  font-size: 2.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+.carousel-text p {
+  font-size: 1.2em;
+  color: #666;
+}
+.carousel-image {
+  width: 45%;
+  max-height: 100%; /* Ограничение высоты для изображения */
+}
+.carousel-image img {
+  width: 100%;
+  height: auto; /* Автоматическое масштабирование изображения */
+  border-radius: 20px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 767px) {
+  .carousel-image img {
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+.carousel-indicators {
+  text-align: center;
   position: absolute;
-  bottom: 10px; /* Индикаторы будут располагаться внизу слайдера */
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
 }
-.slider-indicators div {
+.carousel .dot {
   width: 12px;
   height: 12px;
-  background-color: rgba(255, 255, 255, 0.7); /* Светлый цвет для неактивных индикаторов */
+  background-color: #ddd;
   border-radius: 50%;
-  margin: 8px;
-  transition: background-color 0.3s ease, transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+  display: inline-block;
+  margin: 5px;
+  cursor: pointer;
 }
-.slider-indicators div.active {
-  background-color: rgb(255, 255, 255); /* Яркий цвет для активного индикатора */
-  border: 2px solid rgb(255, 255, 255); /* Белая рамка вокруг активного индикатора */
-  width: 16px;
-  height: 16px;
-  transform: scale(1.2); /* Легкое увеличение активного индикатора */
-}
-@keyframes indicatorBounce {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.3); /* Увеличение индикатора в середине анимации */
-  }
-}
-
-.case__slider {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  border-radius: 10%;
+.carousel .dot.active {
+  background-color: #333;
 }/*# sourceMappingURL=styles.css.map */

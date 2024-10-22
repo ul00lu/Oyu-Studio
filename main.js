@@ -1,3 +1,8 @@
+window.addEventListener('load', () => {
+	const preloader = document.getElementById('preloader')
+	preloader.style.display = 'none' // Убираем preloader после загрузки
+})
+
 //Анимация слов
 document.addEventListener('DOMContentLoaded', function () {
 	const words = ['работают', 'вдохновляют', 'удивляют', 'развиваются']

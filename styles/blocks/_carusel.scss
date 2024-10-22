@@ -11,31 +11,30 @@
 		// height: 100%; /* Растянуть слайд по высоте контейнера */
 		// width: 100%;
 		// transition: transform 0.5s ease-in-out;
-
-		position: absolute; /* Все слайды абсолютно позиционируются внутри контейнера */
-		display: flex; /* Используем flexbox для размещения содержимого внутри слайда */
+		position: absolute;
+		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 20px;
-		background-color: #f0f4ff; /* Цвет фона слайда */
-		border-radius: 20px; /* Скругление углов */
-		height: 100%; /* Растянуть слайд по высоте контейнера */
-		width: 100%; /* Каждый слайд занимает всю ширину контейнера */
-		opacity: 0; /* Изначально все слайды невидимы */
+		column-gap: 5px;
+		background-color: #f0f4ff;
+		border-radius: 20px;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
 		transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-		
 
 		&.active {
-			opacity: 1; /* Показываем активный слайд */
-			transform: translateX(0); /* Смещаем активный слайд на его место */
+			opacity: 1;
+			transform: translateX(0);
 		}
 
 		&.next {
-			transform: translateX(100%); /* Сдвигаем следующий слайд вправо */
+			transform: translateX(100%);
 		}
 
 		&.prev {
-			transform: translateX(-100%); /* Сдвигаем предыдущий слайд влево */
+			transform: translateX(-100%);
 		}
 		@include mobile {
 			flex-direction: column;
@@ -45,8 +44,8 @@
 
 	&-text {
 		width: 50%;
-		max-height: 100%; /* Ограничение высоты для текстового блока */
-		overflow-y: auto; /* Скролл, если текст не помещается */
+		max-height: 100%;
+		overflow-y: auto;
 
 		@include mobile {
 			width: 100%;
@@ -65,12 +64,12 @@
 
 	&-image {
 		width: 45%;
-		max-height: 100%; /* Ограничение высоты для изображения */
+		max-height: 100%;
 	}
 
 	&-image img {
 		width: 100%;
-		height: auto; /* Автоматическое масштабирование изображения */
+		height: auto;
 		border-radius: 20px;
 		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 
@@ -83,7 +82,7 @@
 	&-indicators {
 		text-align: center;
 		position: absolute;
-		bottom: 10px;
+		bottom: 3%;
 		left: 50%;
 		transform: translateX(-50%);
 	}

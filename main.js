@@ -86,6 +86,7 @@ document
 
 // Сенсорные события для перелистывания слайдов на мобильных устройствах
 document.querySelector('.carousel').addEventListener('touchstart', e => {
+	stopAutoScroll() // Останавливаем автоперелистывание при касании
 	startX = e.touches[0].clientX // Запоминаем начальную точку касания
 })
 
@@ -105,6 +106,7 @@ document.querySelector('.carousel').addEventListener('touchend', () => {
 	// Сбрасываем значения
 	startX = 0
 	endX = 0
+	startAutoScroll() // Возобновляем автоперелистывание после окончания касания
 })
 
 // Инициализация: показываем первый слайд

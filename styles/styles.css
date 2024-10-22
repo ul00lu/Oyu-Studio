@@ -588,4 +588,17 @@ h3,
 }
 .case__title {
   padding-bottom: 10px;
+}
+
+.footer {
+  padding-block: 20px;
+}
+@media (max-width: 767px) {
+  .footer {
+    text-align: center;
+  }
+}
+.footer__small {
+  color: var(--color-dark-alt);
+  opacity: 0.5;
 }/*# sourceMappingURL=styles.css.map */

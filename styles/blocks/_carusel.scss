@@ -1,31 +1,45 @@
 .carousel {
-	&-container {
-		position: relative;
-		max-width: 1200px;
-		margin: 0 auto;
-		height: 400px; /* Фиксированная высота карусели */
-		overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
-
-		@include mobile {
-			height: auto;
-		}
-	}
-
+	position: relative;
 	&-slide {
-		display: flex;
+		// display: flex;
+		// justify-content: space-between;
+		// align-items: center;
+		// padding: 20px;
+		// background-color: #f0f4ff;
+		// border-radius: 20px;
+		// margin-bottom: 20px;
+		// height: 100%; /* Растянуть слайд по высоте контейнера */
+		// width: 100%;
+		// transition: transform 0.5s ease-in-out;
+
+		position: absolute; /* Все слайды абсолютно позиционируются внутри контейнера */
+		display: flex; /* Используем flexbox для размещения содержимого внутри слайда */
 		justify-content: space-between;
 		align-items: center;
 		padding: 20px;
-		background-color: #f0f4ff;
-		border-radius: 20px;
-		margin-bottom: 20px;
+		background-color: #f0f4ff; /* Цвет фона слайда */
+		border-radius: 20px; /* Скругление углов */
 		height: 100%; /* Растянуть слайд по высоте контейнера */
-		box-sizing: border-box; /* Для учета padding в высоту */
+		width: 100%; /* Каждый слайд занимает всю ширину контейнера */
+		opacity: 0; /* Изначально все слайды невидимы */
+		transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+		
 
+		&.active {
+			opacity: 1; /* Показываем активный слайд */
+			transform: translateX(0); /* Смещаем активный слайд на его место */
+		}
+
+		&.next {
+			transform: translateX(100%); /* Сдвигаем следующий слайд вправо */
+		}
+
+		&.prev {
+			transform: translateX(-100%); /* Сдвигаем предыдущий слайд влево */
+		}
 		@include mobile {
 			flex-direction: column;
 			text-align: center;
-			height: auto; /* Высота может изменяться на мобильных */
 		}
 	}
 
@@ -34,15 +48,14 @@
 		max-height: 100%; /* Ограничение высоты для текстового блока */
 		overflow-y: auto; /* Скролл, если текст не помещается */
 
-    @include mobile{
-        width: 100%;
-    }
+		@include mobile {
+			width: 100%;
+		}
 	}
 
-	&-text h1 {
-		font-size: 2.5em;
+	&-title {
 		color: #333;
-		margin-bottom: 10px;
+		margin-bottom: 5px;
 	}
 
 	&-text p {
@@ -61,10 +74,10 @@
 		border-radius: 20px;
 		box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 
-    @include mobile{
-       width: 100%;
-       margin-top: 20px;
-    }
+		@include mobile {
+			width: 100%;
+			margin-top: 20px;
+		}
 	}
 
 	&-indicators {
@@ -86,6 +99,7 @@
 	}
 
 	.dot.active {
+		scale: 1.4;
 		background-color: #333;
 	}
 }

@@ -1,0 +1,11 @@
+.case {
+	&__carousel {
+		position: relative;
+		height: 400px; /* Фиксированная высота карусели */
+		overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
+	}
+
+	&__title {
+		padding-bottom: 10px;
+	}
+}

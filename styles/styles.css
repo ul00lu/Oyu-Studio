@@ -272,6 +272,16 @@ h1,
   font-size: clamp(30px, 3.125vw, 45px);
 }
 
+h2,
+.h2 {
+  font-size: clamp(36px, 2.7777777778vw, 40px);
+}
+
+h3,
+.h3 {
+  font-size: clamp(26px, 2.0833333333vw, 30px);
+}
+
 .button {
   display: inline-flex;
   justify-content: center;
@@ -356,7 +366,6 @@ h1,
   align-items: center;
   -moz-column-gap: 15px;
        column-gap: 15px;
-  padding-inline: 20px;
 }
 @media (max-width: 1023px) {
   .hero {
@@ -441,34 +450,36 @@ h1,
   transform: translateY(20px);
 }
 
-.carousel-container {
+.carousel {
   position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 400px; /* Фиксированная высота карусели */
-  overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
-}
-@media (max-width: 767px) {
-  .carousel-container {
-    height: auto;
-  }
 }
 .carousel-slide {
-  display: flex;
+  position: absolute; /* Все слайды абсолютно позиционируются внутри контейнера */
+  display: flex; /* Используем flexbox для размещения содержимого внутри слайда */
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #f0f4ff;
-  border-radius: 20px;
-  margin-bottom: 20px;
+  background-color: #f0f4ff; /* Цвет фона слайда */
+  border-radius: 20px; /* Скругление углов */
   height: 100%; /* Растянуть слайд по высоте контейнера */
-  box-sizing: border-box; /* Для учета padding в высоту */
+  width: 100%; /* Каждый слайд занимает всю ширину контейнера */
+  opacity: 0; /* Изначально все слайды невидимы */
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+.carousel-slide.active {
+  opacity: 1; /* Показываем активный слайд */
+  transform: translateX(0); /* Смещаем активный слайд на его место */
+}
+.carousel-slide.next {
+  transform: translateX(100%); /* Сдвигаем следующий слайд вправо */
+}
+.carousel-slide.prev {
+  transform: translateX(-100%); /* Сдвигаем предыдущий слайд влево */
 }
 @media (max-width: 767px) {
   .carousel-slide {
     flex-direction: column;
     text-align: center;
-    height: auto; /* Высота может изменяться на мобильных */
   }
 }
 .carousel-text {
@@ -481,10 +492,9 @@ h1,
     width: 100%;
   }
 }
-.carousel-text h1 {
-  font-size: 2.5em;
+.carousel-title {
   color: #333;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .carousel-text p {
   font-size: 1.2em;
@@ -523,5 +533,15 @@ h1,
   cursor: pointer;
 }
 .carousel .dot.active {
+  scale: 1.4;
   background-color: #333;
+}
+
+.case__carousel {
+  position: relative;
+  height: 400px; /* Фиксированная высота карусели */
+  overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
+}
+.case__title {
+  padding-bottom: 10px;
 }/*# sourceMappingURL=styles.css.map */

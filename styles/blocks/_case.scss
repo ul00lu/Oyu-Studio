@@ -1,8 +1,12 @@
 .case {
 	&__carousel {
 		position: relative;
-		height: 400px; /* Фиксированная высота карусели */
-		overflow: hidden; /* Чтобы скрыть элементы, выходящие за пределы карусели */
+		height: 450px;
+		overflow: hidden;
+
+		@include mobile-s {
+			height: 400px;
+		}
 	}
 
 	&__title {

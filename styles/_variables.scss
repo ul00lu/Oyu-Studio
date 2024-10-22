@@ -1,4 +1,3 @@
-
 :root {
 	--color-dark: #000000;
 	--color-dark-alt: #1e2532;
@@ -22,5 +21,9 @@
 
 	@include mobile {
 		--section-padding-y: 30px;
+	}
+
+	@include mobile-s {
+		--container-padding-x: 10px;
 	}
 }

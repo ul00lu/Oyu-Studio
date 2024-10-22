@@ -1,8 +1,3 @@
-window.addEventListener('load', () => {
-	const preloader = document.getElementById('preloader')
-	preloader.style.display = 'none' // Убираем preloader после загрузки
-})
-
 //Анимация слов
 document.addEventListener('DOMContentLoaded', function () {
 	const words = ['работают', 'вдохновляют', 'удивляют', 'развиваются']
@@ -23,11 +18,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	setInterval(changeWord, changeTime)
 })
 
-// Карусель
 let currentSlide = 0
 const slides = document.querySelectorAll('.carousel-slide')
 const dots = document.querySelectorAll('.dot')
 let intervalId
+let startX = 0
+let endX = 0
 
 // Функция для отображения текущего слайда
 function showSlide(index) {
@@ -50,6 +46,12 @@ function showSlide(index) {
 // Функция для перехода к следующему слайду
 function nextSlide() {
 	currentSlide = (currentSlide + 1) % slides.length // Переход к следующему слайду
+	showSlide(currentSlide)
+}
+
+// Функция для перехода к предыдущему слайду
+function prevSlide() {
+	currentSlide = (currentSlide - 1 + slides.length) % slides.length // Переход к предыдущему слайду
 	showSlide(currentSlide)
 }
 
@@ -81,6 +83,29 @@ document
 document
 	.querySelector('.carousel')
 	.addEventListener('mouseleave', startAutoScroll)
+
+// Сенсорные события для перелистывания слайдов на мобильных устройствах
+document.querySelector('.carousel').addEventListener('touchstart', e => {
+	startX = e.touches[0].clientX // Запоминаем начальную точку касания
+})
+
+document.querySelector('.carousel').addEventListener('touchmove', e => {
+	endX = e.touches[0].clientX // Запоминаем положение пальца во время движения
+})
+
+document.querySelector('.carousel').addEventListener('touchend', () => {
+	// Вычисляем разницу между началом и концом свайпа
+	if (startX - endX > 50) {
+		// Свайп влево - следующий слайд
+		nextSlide()
+	} else if (endX - startX > 50) {
+		// Свайп вправо - предыдущий слайд
+		prevSlide()
+	}
+	// Сбрасываем значения
+	startX = 0
+	endX = 0
+})
 
 // Инициализация: показываем первый слайд
 showSlide(currentSlide)

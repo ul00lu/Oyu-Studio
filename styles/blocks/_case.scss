@@ -1,11 +1,15 @@
 .case {
 	&__carousel {
 		position: relative;
-		height: 450px;
+		height: 480px;
 		overflow: hidden;
 
+		@include tablet {
+			height: 450px;
+		}
+
 		@include mobile-s {
-			height: 400px;
+			height: 420px;
 		}
 	}
 

@@ -32,7 +32,7 @@
 	&__title {
 		@include mobile {
 			order: -2;
-			margin-bottom: 10px;
+			margin-bottom: 20px;
 		}
 	}
 
@@ -62,13 +62,13 @@
 
 		@include mobile {
 			order: -1;
-			width: 80%;
+			width: 60%;
 			max-width: 100%;
 			margin-bottom: 20px;
 		}
 
 		@include mobile-s {
-			width: 100%;
+			width: 75%;
 		}
 	}
 }

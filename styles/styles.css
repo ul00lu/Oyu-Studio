@@ -403,7 +403,7 @@ h3,
 @media (max-width: 767px) {
   .hero__title {
     order: -2;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 }
 .hero__description {
@@ -432,14 +432,14 @@ h3,
 @media (max-width: 767px) {
   .hero__image {
     order: -1;
-    width: 80%;
+    width: 60%;
     max-width: 100%;
     margin-bottom: 20px;
   }
 }
 @media (max-width: 480px) {
   .hero__image {
-    width: 100%;
+    width: 75%;
   }
 }
 

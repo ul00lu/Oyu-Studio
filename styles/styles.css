@@ -457,6 +457,7 @@ h3,
 
 .carousel {
   position: relative;
+  margin-bottom: 20px;
 }
 .carousel-slide {
   position: absolute;
@@ -587,7 +588,15 @@ h3,
   }
 }
 .case__title {
-  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+.case__button {
+  min-width: 100%;
+}
+@media (min-width: 768px) {
+  .case__button {
+    display: none;
+  }
 }
 
 .footer {

@@ -570,11 +570,6 @@ h3,
   scale: 1.4;
   background-color: #333;
 }
-@media (max-width: 767px) {
-  .carousel .dot.active {
-    scale: 1.2;
-  }
-}
 
 .case__carousel {
   position: relative;

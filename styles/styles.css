@@ -357,9 +357,6 @@ h3,
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
-.header__image {
-  max-width: clamp(50px, 10.4166666667vw, 150px);
-}
 
 .section {
   padding-block: var(--section-padding-y);
